@@ -1,19 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
-/*
- * List of bot states
- *
- * State 0 = Inactive
- * State 1 = Bot active and awaiting instruction for embed design
- * State 2 = Set title
- * State 3 = Assigning new field name
- * State 4 = Assigning new field value
- * State 5 = Assigning embed color
- * State 6 = Assigning footer text
- * State 7 = Assigning footer icon
- * State 8 = Requesting embed channel destination
- */
+
 
 var state = 0;
 var channel = "";
