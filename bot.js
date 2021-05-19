@@ -105,7 +105,7 @@ client.on("message",(message) => {
         }
         
         //we all need help sometimes!
-        if (message.content == "{help")
+        if (message.content == "$help")
         {
             message.channel.send("**Embed Creation Guide**```$title  => allows you to change embeds title\n$field  => allows you to add a field to the embed\n$color  => allows you the change the color of the embed\n$footer => allows you to change the footer details of the embed\n$send   => sends the current embed to the specified channel\n$help   => seriously you dont know $help??```");
         }
