@@ -22,10 +22,10 @@ var tempFooterText = "";
 var embed = new Discord.RichEmbed()
 
 client.on("message",(message) => {
-    if (message.content.startsWith('{'))
+    if (message.content.startsWith('$'))
     {
         //initiating embed creation from the user
-        if (message.content == "{embed")
+        if (message.content == "$embed")
         {
             message.channel.send("Which channel would you like me to send the embed to? ( {Channel ID )");
             state = 8;
@@ -34,32 +34,32 @@ client.on("message",(message) => {
         else if (state == 1)
         {
             //sends the embed to the desired channel
-            if (message.content == "{send")
+            if (message.content == "$send")
             {
                 client.channels.get(channel).send(embed);
                 message.channel.send("Sent!");
                 state = 0;
             }
             //changes embed title
-            else if (message.content.startsWith("{title"))
+            else if (message.content.startsWith("$title"))
             {
                 message.channel.send("What would you like the title to be?");
                 state = 2;
             }
             //adds a field to embed
-            else if (message.content.startsWith("{field"))
+            else if (message.content.startsWith("$field"))
             {
                 message.channel.send("What would you the field name to be?");
                 state = 3;
             }
             //changes embed color
-            else if (message.content.startsWith("{color"))
+            else if (message.content.startsWith("$color"))
             {
                 message.channel.send("What color would you like the embed to be? (Hexadecimal format)");
                 state = 5;
             }
             //changes embed footer
-            else if (message.content.startsWith("{footer"))
+            else if (message.content.startsWith("$footer"))
             {
                 message.channel.send("What would you the footer text to be?");
                 state = 6;
@@ -100,14 +100,14 @@ client.on("message",(message) => {
         else if (state == 8)
         {
             channel = message.content.substring(1);
-            message.channel.send("\n Let's build that embed now\nEnter {help if you would like to see the instructions.");
+            message.channel.send("\n Let's build that embed now\nEnter $help if you would like to see the instructions.");
             state = 1; 
         }
         
         //we all need help sometimes!
         if (message.content == "{help")
         {
-            message.channel.send("**Embed Creation Guide**```{title  => allows you to change embeds title\n{field  => allows you to add a field to the embed\n{color  => allows you the change the color of the embed\n{footer => allows you to change the footer details of the embed\n{send   => sends the current embed to the specified channel\n{help   => that takes you here silly!```");
+            message.channel.send("**Embed Creation Guide**```$title  => allows you to change embeds title\n$field  => allows you to add a field to the embed\n$color  => allows you the change the color of the embed\n$footer => allows you to change the footer details of the embed\n$send   => sends the current embed to the specified channel\n$help   => seriously you dont know $help??```");
         }
         //posts the embed on current channel if it's in the base state
         else if (state == 1)
